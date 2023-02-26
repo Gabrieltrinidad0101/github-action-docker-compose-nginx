@@ -21,7 +21,7 @@ services:
     image: nginx
     container_name: nginx_container
     volumes:
-      - ./ngix:etc/nginx/conf.d
+      - ./ngix:/etc/nginx/conf.d
     ports:
       - 5000:80
     networks:
