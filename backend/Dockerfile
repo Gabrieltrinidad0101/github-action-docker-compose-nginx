@@ -4,9 +4,7 @@ WORKDIR /usr/app/backend
 
 COPY ./package.json .
 
-RUN npm i -g yarn
-
-RUN yarn 
+RUN npm install
 
 COPY . .
 
