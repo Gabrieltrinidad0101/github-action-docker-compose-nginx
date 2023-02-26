@@ -5,16 +5,16 @@ services:
     ports:
       - 3000:5173
     volumes:
-      - ./frontend:./usr/app/frontend
-      - ./usr/app/frontend/node_modules
+      - ./frontend:/usr/app/frontend
+      - /usr/app/frontend/node_modules
   backend:
     build: ./backend
     container_name: backend_conatiner
     ports:
       - 4000:3000
     volumes:
-      - ./backend:./usr/app/backend
-      - ./usr/app/backend/node_modules
+      - ./backend:/usr/app/backend
+      - /usr/app/backend/node_modules
     links: 
       - "mongodb"
   nginx:
