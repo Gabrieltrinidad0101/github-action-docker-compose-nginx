@@ -10,4 +10,4 @@ COPY . .
 
 RUN chmod 777 ./node_modules
 
-CMD ["yarn","run","build"]
+CMD ["yarn","run","dev"]
