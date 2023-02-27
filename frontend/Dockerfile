@@ -10,8 +10,7 @@ COPY . .
 
 RUN chmod 777 ./node_modules
 
-CMD ["yarn","run","build"]
-
+CMD ["npm","run","build"]
 
 FROM nginx
 
