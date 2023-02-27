@@ -12,12 +12,14 @@ RUN chmod 777 ./node_modules
 
 RUN npm run build
 
-FROM nginx
+RUN ls
 
-RUN rm /etc/nginx/conf.d/default.conf
+# FROM nginx
 
-COPY nginx.conf /etc/nginx/conf.d
+# RUN rm /etc/nginx/conf.d/default.conf
 
-COPY dist /usr/share/nginx/html
+# COPY nginx.conf /etc/nginx/conf.d
 
-CMD ["nginx","-g","daemon off;"]
+# COPY dist /usr/share/nginx/html
+
+# CMD ["nginx","-g","daemon off;"]
