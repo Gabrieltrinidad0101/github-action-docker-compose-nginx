@@ -10,7 +10,7 @@ COPY . .
 
 RUN chmod 777 ./node_modules
 
-RUN ["npm","run","build"]
+RUN npm run build
 
 FROM nginx
 
