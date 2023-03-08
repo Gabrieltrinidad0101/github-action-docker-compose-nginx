@@ -1,28 +1,17 @@
-FROM node:18
+FROM node:18-alpine as build
 
 WORKDIR /usr/app/frontend
-ARG MY_SECRET
 
-COPY package.json .
-
-RUN npm install
-
-COPY . .
-
-RUN chmod 777 ./node_modules
+RUN npm install .
 
 RUN npm run build
 
-FROM nginx
+FROM nginx:1.23.3-alpine
 
 RUN rm /etc/nginx/conf.d/default.conf
 
+COPY --from=build /usr/app/frontend/dist /usr/share/nginx/html
+
 COPY nginx.conf /etc/nginx/conf.d
 
-COPY --from=dist /app/dist /usr/share/nginx/html
-
-
-
-RUN echo "${MY_SECRET}" | nginx -s reload
-
-CMD ["nginx","-g","daemon off;"]
+CMD ["nginx","-g","daemon on;"]

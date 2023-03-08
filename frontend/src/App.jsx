@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" onKeyDown={addUser} maxLength="10" />
+      <input type="text" onKeyDown={addUser} maxLength="6" />
       <div>
         {
           users.map(({ name,_id }) =>

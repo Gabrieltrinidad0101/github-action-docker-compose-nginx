@@ -1,0 +1,39 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend_container
+    stdin_open: true
+    ports:
+      - 5500:5500
+    volumes:
+      - ./backend:/usr/app/backend
+      - /usr/app/backend/node_modules
+    networks:
+      - redFrontend
+  backend:
+    build: ./backend
+    container_name: backend_container
+    links:
+      - "mongodb"
+    networks:
+      - redBackend
+    ports:
+      - 30001:30001
+  mongodb:
+    image: mongo
+    container_name: mongo_container
+    ports:
+      - 27017:27017
+  nginx:
+    image: nginx:1.23.3-alpine
+    container_name: nginx_container
+    networks:
+      - redBackend
+      - redFrontend
+    ports:
+      - 8000:8000
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+networks:
+  redBackend:
+  redFrontend:
