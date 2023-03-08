@@ -5,12 +5,12 @@ on:
       branches: ["deploy"]
 
 jobs:
-  build:
+  DEV:
     runs-on: self-hosted
     environment: dev
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker Compose
-        run: docker compose build
+        run: echo ${{secrets.SUDO_PASSWORD}} |sudo -S docker compose build
       - name: Up the Docker Compose
-        run: docker compose up -d
+        run: echo ${{secrets.SUDO_PASSWORD}} |sudo -S docker compose up -d
