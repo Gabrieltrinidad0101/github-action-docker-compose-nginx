@@ -16,4 +16,4 @@ COPY --from=build /usr/app/frontend/dist /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d
 
-CMD ["nginx","-g","daemon on;"]
+CMD ["nginx","-g","daemon off;"]
