@@ -6,8 +6,8 @@ services:
     ports:
       - 5500:5500
     volumes:
-      - ./backend:/usr/app/backend
-      - /usr/app/backend/node_modules
+      - ./frontend:/usr/app/frontend
+      - /usr/app/frontend/node_modules
     networks:
       - redFrontend
   backend:
@@ -19,6 +19,9 @@ services:
       - redBackend
     ports:
       - 30001:30001
+    volumes:
+      - ./backend:/usr/app/backend
+      - /usr/app/backend/node_modules
   mongodb:
     image: mongo
     container_name: mongo_container
