@@ -23,7 +23,7 @@ services:
       - ./backend:/usr/app/backend
       - /usr/app/backend/node_modules
   mongodb:
-    image: mongo
+    image: mongo:5.0.14
     container_name: mongo_container
     ports:
       - 27017:27017
