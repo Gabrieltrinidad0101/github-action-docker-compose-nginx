@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build
 
-FROM nginx
+FROM nginx:1.23.3-alpine
 
 COPY --from=build /usr/app/frontend/dist /usr/share/nginx/html
 
