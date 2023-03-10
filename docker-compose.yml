@@ -9,14 +9,13 @@ services:
       - ./frontend:/usr/app/frontend
       - /usr/app/frontend/node_modules
     networks:
-      - redFrontend
+      - red
   backend:
     stdin_open: true
     build: ./backend
     container_name: backend_container
     networks:
-      - redBackend
-      - redDataBase
+      - red
     ports:
       - 30001:30001
     volumes:
@@ -28,18 +27,15 @@ services:
     ports:
       - 27017:27017
     networks:
-      - redDataBase
+      - red
   nginx:
     image: nginx:1.23.3-alpine
     container_name: nginx_container
     networks:
-      - redBackend
-      - redFrontend
+      - red
     ports:
       - 8000:8000
     volumes:
       - ./nginx:/etc/nginx/conf.d
 networks:
-  redBackend:
-  redFrontend:
-  redDataBase:
+  red:
