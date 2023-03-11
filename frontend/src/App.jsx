@@ -5,14 +5,14 @@ function App() {
   const [users, setUser] = useState([])
 
   const getUser = async _ => {
-    const req = await fetch("http://69.30.237.181:3001/get")
+    const req = await fetch("http://69.30.237.181:8000/api/get")
     const listUsers = await req.json();
     if (listUsers.message) return alert("error get users")
     setUser(listUsers.list);
   }
 
   const addUserApi = async name => {
-    const req = await fetch("http://69.30.237.181:3001/add",{
+    const req = await fetch("http://69.30.237.181:8000/api/add",{
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({name})
