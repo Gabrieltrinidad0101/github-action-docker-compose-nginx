@@ -38,6 +38,7 @@ services:
       - 8000:8000
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - ./nginx_error_pages:/usr/share/nginx/html/nginx_error_pages
 networks:
   redFrontend:
   redBackend:
