@@ -11,6 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker Compose
-        run: echo ${{secrets.SUDO_PASSWORD}} |sudo -S docker compose build
-      - name: Up the Docker Compose
-        run: echo ${{secrets.SUDO_PASSWORD}} |sudo -S docker compose up -d
+        run: echo ${{secrets.SUDO_PASSWORD}} |sudo -S bash ./dokcer-start.sh
