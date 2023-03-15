@@ -1,15 +1,19 @@
-FROM node:18
+FROM node:18-alpine as build
 
 WORKDIR /usr/app/frontend
 
 COPY package.json .
 
-RUN npm i -g yarn
-
-RUN  yarn
+RUN npm install .
 
 COPY . .
 
-RUN chmod 777 ./node_modules
+RUN npm run build
 
-CMD ["yarn","run","build"]
+FROM nginx:1.23.3-alpine
+
+COPY --from=build /usr/app/frontend/dist /usr/share/nginx/html
+
+COPY nginx.conf /etc/nginx/conf.d
+
+CMD ["nginx","-g","daemon off;"]
