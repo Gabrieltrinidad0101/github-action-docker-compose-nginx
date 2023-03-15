@@ -1,1 +1,0 @@
-sudo docker run -it -v $(pwd)/../../backend:/usr/app/backend -v /usr/app/backend/node_modules docker-compose-backend sh
