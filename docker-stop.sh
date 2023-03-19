@@ -1,5 +1,6 @@
-docker compose -f ./docker-compose/docker-compose.yml\
-    -f  ./docker-compose/services/docker-compose.nginx.yml \
-    -f  ./docker-compose/services/docker-compose.database.yml \
-    -f  ./docker-compose/services/docker-compose.frontend.yml \
-    -f  ./docker-compose/services/docker-compose.backend.yml down
+docker compose -f ./docker-compose/docker-compose.yml \
+    -f ./docker-compose/servicesBase/docker-compose.nginx.yml \
+    -f ./docker-compose/servicesBase/docker-compose.database.yml \
+    -f ./docker-compose/servicesBase/docker-compose.backend.yml \
+    -f ./docker-compose/servicesBase/docker-compose.frontend.yml \
+    -f ./docker-compose/servicesDevelopment/docker-compose.frontend.yml down
