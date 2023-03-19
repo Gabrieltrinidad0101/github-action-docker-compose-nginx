@@ -1,4 +1,3 @@
-export API=$1
 docker compose -f ./docker-compose/docker-compose.yml \
     -f ./docker-compose/servicesBase/docker-compose.nginx.yml \
     -f ./docker-compose/servicesBase/docker-compose.database.yml \

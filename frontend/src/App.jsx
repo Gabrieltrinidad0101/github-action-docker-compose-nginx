@@ -37,7 +37,6 @@ function App() {
   return (
     <div className="App">
       <input type="text" onKeyDown={addUser} maxLength="6" />
-      {JSON.stringify(import.meta.env)}
       <div>
         {
           users.map(({ name,_id }) =>
