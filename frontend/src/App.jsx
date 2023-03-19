@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-const url = import.meta.env.VITE_API || "http://localhost:8000";
+const url = import.meta.env.VITE_API ?? "http://localhost:8000";
 
 function App() {
   const [users, setUser] = useState([])
@@ -37,6 +37,7 @@ function App() {
   return (
     <div className="App">
       <input type="text" onKeyDown={addUser} maxLength="6" />
+      {JSON.stringify(import.meta.env)}
       <div>
         {
           users.map(({ name,_id }) =>
