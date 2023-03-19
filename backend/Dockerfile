@@ -1,13 +1,11 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /usr/app/backend
 
-COPY ./package.json .
+COPY package.json .
 
-RUN npm i -g yarn
-
-RUN yarn 
+RUN npm install .
 
 COPY . .
 
-CMD ["yarn","run","dev"]
+CMD ["npm","run","dev"]

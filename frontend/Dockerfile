@@ -1,15 +1,9 @@
-FROM node:18
+FROM node:18-alpine as build
 
 WORKDIR /usr/app/frontend
 
 COPY package.json .
 
-RUN npm i -g yarn
+RUN npm install .
 
-RUN  yarn
-
-COPY . .
-
-RUN chmod 777 ./node_modules
-
-CMD ["yarn","run","build"]
+CMD ["npm","run","dev"]

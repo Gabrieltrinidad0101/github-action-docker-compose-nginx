@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+const url = import.meta.env.VITE_API ?? "http://localhost:8000";
+
 function App() {
   const [users, setUser] = useState([])
 
   const getUser = async _ => {
-    const req = await fetch("http://localhost:3001/get")
+    const req = await fetch(`${url}/api/get`)
     const listUsers = await req.json();
     if (listUsers.message) return alert("error get users")
     setUser(listUsers.list);
   }
-
+  
   const addUserApi = async name => {
-    const req = await fetch("http://localhost:3001/add",{
+    const req = await fetch(`${url}/api/add`,{
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({name})
@@ -34,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" onKeyDown={addUser} maxLength="10" />
+      <input type="text" onKeyDown={addUser} maxLength="6" />
       <div>
         {
           users.map(({ name,_id }) =>

@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  frontend:
+    build: 
+      context: frontend
+      dockerfile: pro.Dockerfile
+    ports:
+      - 5500:5500
