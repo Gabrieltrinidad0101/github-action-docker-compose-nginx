@@ -12,7 +12,7 @@ function App() {
     if (listUsers.message) return alert("error get users")
     setUser(listUsers.list);
   }
-
+  
   const addUserApi = async name => {
     const req = await fetch(`${url}/api/add`,{
       method: "POST",
